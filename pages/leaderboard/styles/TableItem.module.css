@@ -8,6 +8,10 @@
   background-color: var(--pal-grey-50);
 }
 
+.container:hover {
+  cursor: pointer;
+}
+
 .darker {
   background-color: var(--pal-grey-300);
 }
@@ -38,10 +42,23 @@
   grid-area: name;
 }
 
-.details {
-  grid-area: details;
-}
-
 .points {
   grid-area: points;
+  box-shadow: -13px 0px 10px -4px var(--pal-grey-50);
+}
+
+.darker .points {
+  box-shadow: -13px 0px 10px -4px var(--pal-grey-300);
+}
+
+.details {
+  grid-area: details;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.openDetails {
+  flex-wrap: wrap;
 }

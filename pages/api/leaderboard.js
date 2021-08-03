@@ -1,6 +1,8 @@
 import nextConnect from "next-connect";
 import middleware from "middleware/database";
 
+// add caching middleware later https://www.npmjs.com/package/memory-cache
+
 import pointsFunction from "utils/pointsFunction";
 
 const handler = nextConnect();
@@ -88,11 +90,19 @@ const data = {
       username: "Appable",
       fishingXP: 1233346,
       empKills: 12234235,
+      yonksdfa: 3123,
+      fuafaeidf: 12343532,
+      ndsafune: 12388234,
     },
     {
       username: "graciousTempest",
       fishingXP: 1234226,
       empKills: 123325,
+      fishingXP: 1233346,
+      empKills: 12234235,
+      yonksdfa: 3123,
+      fuafaeidf: 12343532,
+      ndsafune: 12388234,
     },
   ],
 };

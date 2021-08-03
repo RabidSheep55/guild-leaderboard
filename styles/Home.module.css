@@ -1,0 +1,14 @@
+.title {
+  font-size: 10ch;
+  text-align: center;
+}
+
+.welcome {
+  font-weight: 400;
+}
+
+.emphasis {
+  background: -webkit-linear-gradient(var(--pal-primary-light) 0%, var(--pal-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

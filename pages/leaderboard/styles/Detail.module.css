@@ -1,3 +1,7 @@
 .detail {
-  background-color: var(--pal-primary-lighter);
+  background-color: var(--pal-grey-50);
+  padding: 0.2rem 0.4rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap
 }

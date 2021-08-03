@@ -13,9 +13,9 @@
   height: 50px;
   padding: 5px 0;
   display: grid;
-  background-color: var(--pal-primary-light);
+  background-color: var(--pal-primary-main);
   border-radius: 25px 25px 4px 4px;
-  border: 2px solid var(--pal-primary-main);
+  border: 2px solid var(--pal-primary-light);
   border-bottom: none;
   color: var(--pal-text-inverted);
 }
@@ -28,7 +28,7 @@
   font-weight: 600;
   width: 100%;
   padding-left: 1rem;
-  border-left: 1px solid var(--pal-primary-main);
+  border-left: 1px solid var(--pal-primary-light);
 }
 
 .rankHeader {

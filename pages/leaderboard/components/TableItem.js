@@ -16,11 +16,18 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
         tableStyles.tableSettings,
         darker && styles.darker,
         last && styles.last,
-      ].join(" ")}
+        ].join(" ")}
+      onClick={() => setIsOpen((prev) => !prev)}
     >
       <div className={[styles.item, styles.rank].join(" ")}>{rank}</div>
       <div className={[styles.item, styles.name].join(" ")}>{name}</div>
-      <div className={[styles.item, styles.details].join(" ")}>
+      <div
+        className={[
+          styles.item,
+          styles.details,
+          isOpen && styles.openDetails,
+          ].join(" ")}
+      >
         {details.map((item, ind) => (
           <Detail data={item} key={ind} />
         ))}

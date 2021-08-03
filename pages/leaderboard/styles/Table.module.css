@@ -1,0 +1,49 @@
+.container {
+  min-width: 700px;
+  max-width: 1200px;
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.tableSettings {
+  grid-template: "rank name details points"/ 70px 170px 1fr 100px;
+}
+
+.headers {
+  height: 50px;
+  padding: 5px 0;
+  display: grid;
+  background-color: var(--pal-primary-light);
+  border-radius: 25px 25px 4px 4px;
+  border: 2px solid var(--pal-primary-main);
+  border-bottom: none;
+  color: var(--pal-text-inverted);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 100%;
+  padding-left: 1rem;
+  border-left: 1px solid var(--pal-primary-main);
+}
+
+.rankHeader {
+  grid-area: rank;
+  border: none;
+}
+
+.nameHeader {
+  grid-area: name;
+}
+
+.detailsHeader {
+  grid-area: details;
+}
+
+.pointsHeader {
+  grid-area: points;
+}

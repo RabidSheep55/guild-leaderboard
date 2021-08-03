@@ -1,3 +1,7 @@
 export default function pointsFunction(props) {
-  return props.fishingXP + props.empKills * 2;
+  return (
+    props["Sea Emperor Kills"] * 8 +
+    props["GW Kills"] * 3 +
+    props["Hydra Kills"] * 3.5
+  );
 }

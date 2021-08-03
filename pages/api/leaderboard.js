@@ -8,116 +8,43 @@ import pointsFunction from "utils/pointsFunction";
 const handler = nextConnect();
 handler.use(middleware);
 
-const data = {
-  timestamp: 123,
-  data: [
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "RabidSheep55",
-      fishingXP: 12346,
-      empKills: 234,
-    },
-    {
-      username: "demonhunter990",
-      fishingXP: 884,
-      empKills: 1235,
-    },
-    {
-      username: "Appable",
-      fishingXP: 1233346,
-      empKills: 12234235,
-      yonksdfa: 3123,
-      fuafaeidf: 12343532,
-      ndsafune: 12388234,
-    },
-    {
-      username: "graciousTempest",
-      fishingXP: 1234226,
-      empKills: 123325,
-      fishingXP: 1233346,
-      empKills: 12234235,
-      yonksdfa: 3123,
-      fuafaeidf: 12343532,
-      ndsafune: 12388234,
-    },
-  ],
-};
-
 handler.get(async (req, res) => {
-  // let doc = await req.db.collection("daily").findOne();
-  // console.log(doc);
-  //
+  let startdata = await req.db.collection("startdata").findOne();
+
+  // Construct an initValues dict to be able to query it more easily
+  let initValues = {};
+  startdata.data.forEach((block) => {
+    initValues[block.username] = block;
+  });
+
+  // Get the last log document
+  let data = await req.db
+    .collection("timedata")
+    .find({})
+    .sort({ timestamp: -1 })
+    .limit(1)
+    .toArray();
+
+  data = data[0];
+
+  // Compute diffs
+  data.data.map((item) => {
+    // If we have this player in initValues
+    // const isInit = item.username in initValues;
+    for (const [key, value] of Object.entries(item)) {
+      if (key != "username") {
+        item[key] =
+          parseFloat(value) - (initValues[item.username] || item)[key];
+      }
+    }
+  });
 
   // Add points to each
   data.data.forEach((item) => {
     item.details = Object.keys(item)
       .filter((e) => e != "username")
       .reduce((acc, cur, ind) => [...acc, [cur, item[cur]]], []);
-    item.points = pointsFunction(item);
+    item.points = pointsFunction(item) || 0;
   });
 
   // Sort by points

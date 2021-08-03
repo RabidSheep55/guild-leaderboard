@@ -5,3 +5,7 @@
   border-radius: 4px;
   white-space: nowrap
 }
+
+.darker {
+  background-color: var(--pal-grey-200)
+}

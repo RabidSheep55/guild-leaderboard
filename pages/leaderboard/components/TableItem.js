@@ -29,7 +29,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
           ].join(" ")}
       >
         {details.map((item, ind) => (
-          <Detail data={item} key={ind} />
+          <Detail data={item} darker={darker} key={ind} />
         ))}
       </div>
       <div className={[styles.item, styles.points].join(" ")}>{points}</div>

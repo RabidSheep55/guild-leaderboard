@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 import nextConnect from "next-connect";
 
 const client = new MongoClient(
-  `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@fisherstalkercluster.x9fvi.mongodb.net`,
+  `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}.mongodb.net/${process.env.MONGODB_DATABASE}`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -11,9 +11,9 @@ const client = new MongoClient(
 );
 
 async function database(req, res, next) {
-  // if (!client.isConnected()) await client.connect();
-  // req.dbClient = client;
-  // req.db = client.db(process.env.MONGODB_DATABASE);
+  if (!client.isConnected) await client.connect();
+  req.dbClient = client;
+  req.db = client.db(process.env.MONGODB_DATABASE);
   return next();
 }
 

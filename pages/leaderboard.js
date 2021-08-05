@@ -25,7 +25,7 @@ export default Leaderboard;
 
 export async function getServerSideProps(context) {
   // Fetch from API
-  const res = await fetch(`${process.env.API_URL}/leaderboard`);
+  const res = await fetch(`http://${process.env.VERCEL_URL}/api/leaderboard`);
   const json = await res.json();
   const headers = res.headers;
 

@@ -33,7 +33,7 @@ export default Event;
 
 export async function getServerSideProps(context) {
   // Fetch from API
-  const res = await fetch("http://localhost:3000/api/event");
+  const res = await fetch(`${process.env.API_URL}/event`);
   const json = await res.json();
   const headers = res.headers;
 

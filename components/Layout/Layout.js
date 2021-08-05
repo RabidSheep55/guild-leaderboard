@@ -19,7 +19,7 @@ export default function Layout({ children }) {
   // window object is only accessible on load
   useEffect(() => {
     const val =
-      window.matchMedia("(prefers-color-scheme: dark)").matches || false;
+      window.matchMedia("(prefers-color-scheme: light)").matches || true;
     modifyTheme(val);
   }, []);
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
       className={[
         styles.container,
         isDarkMode ? darkTheme.theme : lightTheme.theme,
-      ].join(" ")}
+        ].join(" ")}
     >
       <Head>
         <title>FPF Guild</title>
@@ -37,11 +37,14 @@ export default function Layout({ children }) {
           content="First Place Fishing Guild App - for guild event leaderboards and more!"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Navbar isDarkMode={isDarkMode} modifyTheme={modifyTheme} />
-      <main className={styles.main}>{children}</main>
-      <Footer />
+      <div className={styles.content}>
+        <main className={styles.main}>{children}</main>
+        <Footer />
+      </div>
     </div>
   );
 }

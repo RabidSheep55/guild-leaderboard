@@ -3,6 +3,7 @@
   max-width: 1000px;
   width: 80%;
   margin-bottom: 50px;
+  overflow-x: visible;
 }
 
 .tableSettings {

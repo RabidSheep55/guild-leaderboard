@@ -1,12 +1,14 @@
 import nextConnect from "next-connect";
-import middleware from "middleware/database";
+import dbMiddleware from "middleware/database";
+import { returnCache, cacheResult } from "middleware/cache";
 
 // add caching middleware later https://www.npmjs.com/package/memory-cache
 
 import pointsFunction from "utils/pointsFunction";
 
 const handler = nextConnect();
-handler.use(middleware);
+handler.use(returnCache);
+handler.use(dbMiddleware);
 
 // Aggregation pipeline for the timedata collection
 // Retrieves oldest and most recent data points for each player in the most flexible way possible
@@ -19,7 +21,7 @@ const agg = [
   { $project: { "latest.uuid": 0, "oldest.uuid": 0 } },
 ];
 
-handler.get(async (req, res) => {
+handler.get(async (req, res, next) => {
   // Extract data, running through the aggregation pipeline
   const timedata = await req.db.collection("timedata").aggregate(agg).toArray();
 
@@ -61,7 +63,12 @@ handler.get(async (req, res) => {
     item.rank = ind + 1;
   });
 
-  res.status(200).json(data);
+  req.leaderboardData = data;
+
+  // Need to pass to the cacheResult middleware
+  return next();
 });
+
+handler.use(cacheResult);
 
 export default handler;

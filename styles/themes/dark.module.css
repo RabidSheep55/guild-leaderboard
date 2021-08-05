@@ -1,0 +1,44 @@
+.theme {
+  --pal-primary-dark: #8dc6ff;
+  --pal-primary-main: #4791db;
+  --pal-primary-light: #1976d2;
+  --pal-primary-lighter: #115293;
+  --pal-secondary-light: #e33371;
+  --pal-secondary-main: #dc004e;
+  --pal-secondary-dark: #9a0036;
+  --pal-error-light: #e57373;
+  --pal-error-main: #f44336;
+  --pal-error-dark: #d32f2f;
+  --pal-warning-light: #ffb74d;
+  --pal-warning-main: #ff9800;
+  --pal-warning-dark: #f57c00;
+  --pal-info-light: #64b5f6;
+  --pal-info-main: #2196f3;
+  --pal-info-dark: #1976d2;
+  --pal-success-light: #81c784;
+  --pal-success-main: #4caf50;
+  --pal-success-dark: #388e3c;
+  /*  */
+  --pal-background-default: #303030;
+  --pal-background-paper: #424242;
+  --pal-divider: rgba(255, 255, 255, 0.12);
+  /*  */
+  --pal-text-primary: #fff;
+  --pal-text-secondary: rgba(255, 255, 255, 0.7);
+  --pal-text-disabled: rgba(255, 255, 255, 0.5);
+  --pal-text-inverted: rgba(0, 0, 0, 0.7);
+  /*  */
+  --pal-grey-900: #fafafa;
+  --pal-grey-800: #f5f5f5;
+  --pal-grey-700: #eeeeee;
+  --pal-grey-600: #e0e0e0;
+  --pal-grey-500: #bdbdbd;
+  --pal-grey-400: #9e9e9e;
+  --pal-grey-300: #757575;
+  --pal-grey-200: #616161;
+  --pal-grey-100: #424242;
+  --pal-grey-50: #212121;
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
+  --pal-make-primary-main: brightness(0) saturate(100%) invert(56%) sepia(32%) saturate(3176%) hue-rotate(187deg) brightness(92%) contrast(85%);
+  --pal-make-text-inverted: brightness(0) opacity(0.7);
+}

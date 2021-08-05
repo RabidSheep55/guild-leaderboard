@@ -1,4 +1,4 @@
-:root {
+.theme {
   --pal-primary-lighter: #8dc6ff;
   --pal-primary-light: #4791db;
   --pal-primary-main: #1976d2;
@@ -19,11 +19,14 @@
   --pal-success-main: #4caf50;
   --pal-success-dark: #388e3c;
   /*  */
+  --pal-background-default: #fafafa;
+  --pal-background-paper: #fff;
+  --pal-divider: rgba(0, 0, 0, 0.12);
+  /*  */
   --pal-text-primary: rgba(0, 0, 0, 0.87);
   --pal-text-secondary: rgba(0, 0, 0, 0.54);
-  --pal-text-hint: rgba(0, 0, 0, 0.38);
   --pal-text-disabled: rgba(0, 0, 0, 0.38);
-  --pal-text-inverted: white;
+  --pal-text-inverted: #fff;
   /*  */
   --pal-grey-50: #fafafa;
   --pal-grey-100: #f5f5f5;

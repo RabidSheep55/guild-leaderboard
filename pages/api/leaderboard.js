@@ -8,52 +8,56 @@ import pointsFunction from "utils/pointsFunction";
 const handler = nextConnect();
 handler.use(middleware);
 
+// Aggregation pipeline for the timedata collection
+// Retrieves oldest and most recent data points for each player in the most flexible way possible
+const agg = [
+  { $unwind: { path: "$data" } },
+  { $sort: { timestamp: 1 } },
+  { $set: { "data.timestamp": "$timestamp" } },
+  { $group: { _id: "$data.uuid", data: { $push: "$data" } } },
+  { $project: { latest: { $last: "$data" }, oldest: { $first: "$data" } } },
+  { $project: { "latest.uuid": 0, "oldest.uuid": 0 } },
+];
+
 handler.get(async (req, res) => {
-  let startdata = await req.db.collection("startdata").findOne();
+  // Extract data, running through the aggregation pipeline
+  const timedata = await req.db.collection("timedata").aggregate(agg).toArray();
 
-  // Construct an initValues dict to be able to query it more easily
-  let initValues = {};
-  startdata.data.forEach((block) => {
-    initValues[block.username] = block;
-  });
-
-  // Get the last log document
-  let data = await req.db
-    .collection("timedata")
-    .find({})
-    .sort({ timestamp: -1 })
-    .limit(1)
-    .toArray();
-
-  data = data[0];
-
-  // Compute diffs
-  data.data.map((item) => {
-    // If we have this player in initValues
-    // const isInit = item.username in initValues;
-    for (const [key, value] of Object.entries(item)) {
-      if (key != "username") {
-        item[key] =
-          parseFloat(value) - (initValues[item.username] || item)[key];
-      }
-    }
+  // Compute diffs for each player into new data array
+  let data = [];
+  timedata.forEach((item) => {
+    data.push(
+      Object.keys(item.latest)
+        .filter((e) => e != "username" && e != "timestamp")
+        .reduce(
+          (acc, key) => ({
+            ...acc,
+            details: {
+              ...acc.details,
+              [key]: item.latest[key] - item.oldest[key],
+            },
+          }),
+          {
+            username: item.latest.username,
+            timestamp: item.latest.timestamp,
+            details: {},
+          }
+        )
+    );
   });
 
   // Add points to each
-  data.data.forEach((item) => {
-    item.details = Object.keys(item)
-      .filter((e) => e != "username")
-      .reduce((acc, cur, ind) => [...acc, [cur, item[cur]]], []);
-    item.points = pointsFunction(item) || 0;
+  data.forEach((item) => {
+    item.points = pointsFunction(item.details) || 0;
   });
 
   // Sort by points
-  data.data.sort((a, b) =>
+  data.sort((a, b) =>
     a.points <= b.points ? (a.points === b.points ? 0 : 1) : -1
   );
 
   // Add Rank
-  data.data.forEach((item, ind) => {
+  data.forEach((item, ind) => {
     item.rank = ind + 1;
   });
 

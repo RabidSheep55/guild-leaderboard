@@ -16,7 +16,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
         tableStyles.tableSettings,
         darker && styles.darker,
         last && styles.last,
-        ].join(" ")}
+      ].join(" ")}
       onClick={() => setIsOpen((prev) => !prev)}
     >
       <div className={[styles.item, styles.rank].join(" ")}>{rank}</div>
@@ -26,9 +26,9 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
           styles.item,
           styles.details,
           isOpen && styles.openDetails,
-          ].join(" ")}
+        ].join(" ")}
       >
-        {details.map((item, ind) => (
+        {Object.entries(details).map((item, ind) => (
           <Detail data={item} darker={darker} key={ind} />
         ))}
       </div>
@@ -40,7 +40,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
 TableItem.propTypes = {
   rank: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  details: PropTypes.array,
+  details: PropTypes.object,
   points: PropTypes.number.isRequired,
 };
 

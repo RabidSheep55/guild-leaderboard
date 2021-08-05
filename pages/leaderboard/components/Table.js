@@ -11,7 +11,7 @@ const Table = ({ data }) => {
           Username
         </div>
         <div className={[styles.header, styles.detailsHeader].join(" ")}>
-          Details (Click to view all)
+          Details
         </div>
         <div className={[styles.header, styles.pointsHeader].join(" ")}>
           Points

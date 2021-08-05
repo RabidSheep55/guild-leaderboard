@@ -12,7 +12,7 @@ const Leaderboard = ({ data }) => {
         View each guild member&apos;s stats relevant to the currently running
         event. Data is updated every 15 minutes
       </p>
-      <Table data={data.data} />
+      <Table data={data} />
     </div>
   );
 };

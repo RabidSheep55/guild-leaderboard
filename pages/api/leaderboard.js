@@ -63,7 +63,7 @@ handler.get(async (req, res, next) => {
     item.rank = ind + 1;
   });
 
-  req.leaderboardData = data;
+  req.outputData = data;
 
   // Need to pass to the cacheResult middleware
   return next();

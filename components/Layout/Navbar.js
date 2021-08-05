@@ -27,8 +27,11 @@ export default function Navbar({ isDarkMode, modifyTheme }) {
         <Link href="/">
           <a className={styles.navItem}>Home</a>
         </Link>
+        <Link href="/event">
+          <a className={styles.navItem}>Event</a>
+        </Link>
         <Link href="/leaderboard">
-          <a className={styles.navItem}>Event Leaderboard</a>
+          <a className={styles.navItem}>Leaderboard</a>
         </Link>
         <a
           className={[styles.navItem, styles.discordItem].join(" ")}

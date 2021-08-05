@@ -28,10 +28,10 @@ async function cacheResultAndReturn(req, res, next) {
   const cacheKey = encodeURIComponent(req.url);
 
   // Set cache
-  context.cache.set(cacheKey, { data: req.leaderboardData, birth: Date.now() });
+  context.cache.set(cacheKey, { data: req.outputData, birth: Date.now() });
 
   res.setHeader("X-Cache", "SET");
-  res.status(200).json(req.leaderboardData);
+  res.status(200).json(req.outputData);
 }
 
 const returnCache = nextConnect();

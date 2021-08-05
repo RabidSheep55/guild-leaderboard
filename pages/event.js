@@ -1,8 +1,10 @@
-import StatCard from "./components/StatCard";
+import Error from "components/Error";
 
-import styles from "./styles/Event.module.css";
+import StatCard from "components/StatCard";
 
-const Event = ({ cacheInfo, data }) => {
+import styles from "styles/Event.module.css";
+
+const Event = ({ cacheInfo = {}, data = {} }) => {
   console.log("Cache Info", cacheInfo);
   const { pointParams, eventInfo } = data;
 

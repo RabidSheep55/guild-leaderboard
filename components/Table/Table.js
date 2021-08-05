@@ -1,6 +1,6 @@
-import TableItem from "./TableItem";
+import TableItem from "./components/TableItem";
 
-import styles from "../styles/Table.module.css";
+import styles from "./styles/Table.module.css";
 
 const Table = ({ data }) => {
   return (

@@ -44,4 +44,11 @@ TableItem.propTypes = {
   points: PropTypes.number.isRequired,
 };
 
+TableItem.defaultProps = {
+  rank: -1,
+  name: "",
+  details: "",
+  points: 0,
+};
+
 export default TableItem;

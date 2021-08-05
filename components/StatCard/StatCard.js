@@ -1,6 +1,6 @@
-import styles from "../styles/StatCard.module.css";
+import styles from "./StatCard.module.css";
 
-const StatCard = ({ data }) => {
+const StatCard = ({ data = {} }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>{data.display_name}</h2>

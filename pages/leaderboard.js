@@ -1,10 +1,12 @@
-import Table from "./components/Table";
+import Error from "components/Error";
+
+import Table from "components/Table";
 
 import fetch from "isomorphic-unfetch";
 
-import styles from "./styles/Leaderboard.module.css";
+import styles from "styles/Leaderboard.module.css";
 
-const Leaderboard = ({ data, cacheInfo }) => {
+const Leaderboard = ({ data = [], cacheInfo = {} }) => {
   console.log("Cache Info", cacheInfo);
 
   return (

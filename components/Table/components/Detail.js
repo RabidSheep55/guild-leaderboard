@@ -1,7 +1,7 @@
 import styles from "../styles/Detail.module.css";
 import numeral from "numeral";
 
-export default function Detail({ data, darker }) {
+export default function Detail({ data = [], darker = null }) {
   let [key, value] = data;
 
   return (

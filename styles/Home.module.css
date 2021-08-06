@@ -1,6 +1,9 @@
 .title {
   font-size: 10ch;
   text-align: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  line-height: 1.6ch;
 }
 
 .welcome {

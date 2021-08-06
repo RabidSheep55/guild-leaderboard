@@ -1,16 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import { useState, useEffect } from "react";
 import { Moon, Sun } from "react-feather";
+
+import Hamburger from "./Hamburger";
 
 import layoutStyles from "./Layout.module.css";
 import styles from "./Navbar.module.css";
 
 export default function Navbar({ isDarkMode, modifyTheme }) {
+  const [ham, setHam] = useState(false);
+
   return (
     <header className={[layoutStyles.header, styles.header].join(" ")}>
-      <h1 className={styles.title}>FPF Guild App</h1>
-      <nav className={styles.nav}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.title}>FPF Events</h1>
         <div className={styles.iconContainer}>
           {isDarkMode ? (
             <Sun
@@ -24,20 +28,30 @@ export default function Navbar({ isDarkMode, modifyTheme }) {
             />
           )}
         </div>
+      </div>
+
+      <nav className={[styles.nav, ham && styles.openHam].join(" ")}>
         <Link href="/">
-          <a className={styles.navItem}>Home</a>
+          <a className={styles.navItem} onClick={() => setHam(false)}>
+            Home
+          </a>
         </Link>
         <Link href="/event">
-          <a className={styles.navItem}>Event</a>
+          <a className={styles.navItem} onClick={() => setHam(false)}>
+            Event
+          </a>
         </Link>
         <Link href="/leaderboard">
-          <a className={styles.navItem}>Leaderboard</a>
+          <a className={styles.navItem} onClick={() => setHam(false)}>
+            Leaderboard
+          </a>
         </Link>
         <a
           className={[styles.navItem, styles.discordItem].join(" ")}
-          href="https://github.com/RabidSheep55"
+          href="https://discord.gg/5NQWyePKmp"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => setHam(false)}
         >
           <div className={styles.discord}>
             <Image
@@ -52,6 +66,9 @@ export default function Navbar({ isDarkMode, modifyTheme }) {
           <span>Discord</span>
         </a>
       </nav>
+      <div className={styles.hamContainer}>
+        <Hamburger isOpen={ham} onClick={() => setHam((prev) => !prev)} />
+      </div>
     </header>
   );
 }

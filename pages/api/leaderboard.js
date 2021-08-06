@@ -48,9 +48,25 @@ handler.get(async (req, res, next) => {
     );
   });
 
+  // Fetch event points distribution from the db
+  const pointParams = await req.db
+    .collection("point_params")
+    .find(
+      { enabled: true },
+      { projection: { _id: 0, weight: 1, display_name: 1 } }
+    )
+    .toArray();
+
+  console.log(pointParams);
+
   // Add points to each
   data.forEach((item) => {
-    item.points = pointsFunction(item.details) || 0;
+    item.points =
+      pointParams.reduce(
+        (acc, cur) =>
+          acc + item.details[cur.display_name] * parseFloat(cur.weight),
+        0
+      ) || 0;
   });
 
   // Sort by points

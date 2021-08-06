@@ -6,6 +6,7 @@
   display: grid;
   grid-template: "title weight""description weight"/ 1fr 100px;
   position: relative;
+  box-shadow: var(--shadow-small);
 }
 
 .title {

@@ -2,12 +2,15 @@
   padding: 0 10%;
   background: var(--pal-primary-main);
   color: var(--pal-text-inverted);
+  box-shadow: var(--shadow-medium);
 }
 
 .titleContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .title {
@@ -122,6 +125,18 @@
     align-items: flex-end;
     background-color: var(--pal-primary-main);
     border-bottom-left-radius: 1rem;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .nav.openHam:before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--pal-primary-main);
+    z-index: -10;
   }
 
   .nav.openHam:after {

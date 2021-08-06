@@ -41,4 +41,9 @@
   /* https://codepen.io/sosuke/pen/Pjoqqp */
   --pal-make-primary-main: brightness(0) saturate(100%) invert(56%) sepia(32%) saturate(3176%) hue-rotate(187deg) brightness(92%) contrast(85%);
   --pal-make-text-inverted: brightness(0) opacity(0.7);
+  /*  */
+  --shadow-smallest: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-small: 0 5px 10px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-large: 0 30px 60px rgba(0, 0, 0, 0.3);
 }

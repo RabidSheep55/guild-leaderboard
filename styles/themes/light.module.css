@@ -44,4 +44,9 @@
   --pal-grey-A700: #616161;
   /*  */
   --pal-make-primary-main: brightness(0) saturate(100%) invert(32%) sepia(58%) saturate(5923%) hue-rotate(198deg) brightness(97%) contrast(80%);
+  /*  */
+  --shadow-smallest: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-large: 0 30px 60px rgba(0, 0, 0, 0.12);
 }

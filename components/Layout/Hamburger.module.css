@@ -1,4 +1,6 @@
 .hamburger {
+  position: relative;
+  z-index: 100;
   font: inherit;
   display: inline-block;
   overflow: visible;

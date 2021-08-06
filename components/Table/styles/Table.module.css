@@ -4,6 +4,9 @@
   width: 80%;
   margin-bottom: 50px;
   overflow-x: visible;
+  box-shadow: var(--shadow-medium);
+  background-color: transparent;
+  border-radius: 25px;
 }
 
 .tableSettings {

@@ -57,8 +57,6 @@ handler.get(async (req, res, next) => {
     )
     .toArray();
 
-  console.log(pointParams);
-
   // Add points to each
   data.forEach((item) => {
     item.points =

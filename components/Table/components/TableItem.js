@@ -1,6 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
+import numeral from "numeral";
+
 import Detail from "./Detail";
 
 import styles from "../styles/TableItem.module.css";
@@ -16,7 +18,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
         tableStyles.tableSettings,
         darker && styles.darker,
         last && styles.last,
-      ].join(" ")}
+        ].join(" ")}
       onClick={() => setIsOpen((prev) => !prev)}
     >
       <div className={[styles.item, styles.rank].join(" ")}>{rank}</div>
@@ -26,13 +28,18 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
           styles.item,
           styles.details,
           isOpen && styles.openDetails,
-        ].join(" ")}
+          ].join(" ")}
       >
-        {Object.entries(details).map((item, ind) => (
-          <Detail data={item} darker={darker} key={ind} />
-        ))}
+        {Object.entries(details)
+          .filter((item) => item[1] != 0)
+          .sort((a, b) => (a[1] <= b[1] ? (a[1] === b[1] ? 0 : 1) : -1))
+          .map((item, ind) => (
+            <Detail data={item} darker={darker} key={ind} />
+          ))}
       </div>
-      <div className={[styles.item, styles.points].join(" ")}>{points}</div>
+      <div className={[styles.item, styles.points].join(" ")}>
+        {numeral(points).format("0.00a") || points}
+      </div>
     </div>
   );
 };

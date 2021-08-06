@@ -42,6 +42,7 @@ handler.get(async (req, res, next) => {
           {
             username: item.latest.username,
             timestamp: item.latest.timestamp,
+            first_timestamp: item.oldest.timestamp,
             details: {},
           }
         )

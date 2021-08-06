@@ -31,7 +31,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
           ].join(" ")}
       >
         {Object.entries(details)
-          .filter((item) => item[1] != 0)
+          .filter((item) => item[1] != 0 && item[1] != null)
           .sort((a, b) => (a[1] <= b[1] ? (a[1] === b[1] ? 0 : 1) : -1))
           .map((item, ind) => (
             <Detail data={item} darker={darker} key={ind} />

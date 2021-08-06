@@ -41,6 +41,7 @@ export default function Layout({ children }) {
       </Head>
 
       <Navbar isDarkMode={isDarkMode} modifyTheme={modifyTheme} />
+      <div className={styles.progressbar} id="progressbar"></div>
       <div className={styles.content}>
         <main className={styles.main}>{children}</main>
         <Footer />

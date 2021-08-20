@@ -5,7 +5,7 @@
   margin-bottom: 50px;
   overflow-x: visible;
   box-shadow: var(--shadow-medium);
-  background-color: transparent;
+  background-color: var(--pal-background-default);
   border-radius: 25px;
 }
 
@@ -50,4 +50,11 @@
 
 .pointsHeader {
   grid-area: points;
+}
+
+.nodata {
+  color: var(--pal-grey-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

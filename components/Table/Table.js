@@ -3,6 +3,7 @@ import TableItem from "./components/TableItem";
 import styles from "./styles/Table.module.css";
 
 const Table = ({ data }) => {
+  console.log(data);
   return (
     <div className={styles.container}>
       <div className={[styles.headers, styles.tableSettings].join(" ")}>
@@ -17,7 +18,7 @@ const Table = ({ data }) => {
           Points
         </div>
       </div>
-      {data &&
+      {data.length ? (
         data.map((item, index) => (
           <TableItem
             key={index}
@@ -28,7 +29,14 @@ const Table = ({ data }) => {
             darker={index % 2 === 0}
             last={index === data.length - 1}
           />
-        ))}
+        ))
+      ) : (
+        <div className={styles.nodata}>
+          <p>
+            <i>This event doesn&apos;t appear have player data yet :/</i>
+          </p>
+        </div>
+      )}
     </div>
   );
 };

@@ -3,7 +3,6 @@ import TableItem from "./components/TableItem";
 import styles from "./styles/Table.module.css";
 
 const Table = ({ data }) => {
-  console.log(data);
   return (
     <div className={styles.container}>
       <div className={[styles.headers, styles.tableSettings].join(" ")}>

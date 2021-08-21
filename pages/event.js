@@ -18,6 +18,8 @@ const Event = ({ cacheInfo = {}, data = {} }) => {
           for the points system
         </span>
       </p>
+      <p>Start time: {eventInfo.start_timestamp}</p>
+      <p>End time: {eventInfo.end_timestamp}</p>
       <div className={styles.statsContainer}>
         {pointParams.map((item, ind) => (
           <div className={styles.cardContainer} key={ind}>

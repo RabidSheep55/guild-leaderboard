@@ -14,18 +14,17 @@ export default function Navbar({ isDarkMode, modifyTheme }) {
   return (
     <header className={[layoutStyles.header, styles.header].join(" ")}>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>FPF Events</h1>
-        <div className={styles.iconContainer}>
+        <h1 className={styles.title}>
+          <Link href="/">FPF Events</Link>
+        </h1>
+        <div
+          className={styles.iconContainer}
+          onClick={() => modifyTheme((prev) => !prev)}
+        >
           {isDarkMode ? (
-            <Sun
-              onClick={() => modifyTheme(false)}
-              className={styles.themeIcon}
-            />
+            <Sun className={styles.themeIcon} />
           ) : (
-            <Moon
-              onClick={() => modifyTheme(true)}
-              className={styles.themeIcon}
-            />
+            <Moon className={styles.themeIcon} />
           )}
         </div>
       </div>

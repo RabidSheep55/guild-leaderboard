@@ -1,0 +1,11 @@
+.card {
+  background-color: var(--pal-error-light);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  box-shadow: var(--shadow-small);
+}
+
+.moment {
+  font-weight: 700;
+}

@@ -1,6 +1,7 @@
 import Error from "components/Error";
 
 import StatCard from "components/StatCard";
+import LiveTimer from "components/LiveTimer";
 
 import styles from "styles/Event.module.css";
 
@@ -15,11 +16,13 @@ const Event = ({ cacheInfo = {}, data = {} }) => {
         {eventInfo.description}{" "}
         <span>
           Shown below are all the tracked stats, and their associated weights
-          for the points system
+          for the points system.
         </span>
       </p>
-      <p>Start time: {eventInfo.start_timestamp}</p>
-      <p>End time: {eventInfo.end_timestamp}</p>
+      <LiveTimer
+        startTime={+new Date(eventInfo.start_timestamp)}
+        endTime={+new Date(eventInfo.end_timestamp)}
+      />
       <div className={styles.statsContainer}>
         {pointParams.map((item, ind) => (
           <div className={styles.cardContainer} key={ind}>

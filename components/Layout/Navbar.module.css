@@ -26,6 +26,7 @@
 }
 
 .navItem {
+  user-select: none;
   margin: 0.5rem;
   padding: 0 0.8rem;
   border-radius: 4px;

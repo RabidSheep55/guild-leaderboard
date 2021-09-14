@@ -9,7 +9,7 @@ import styles from "styles/Leaderboard.module.css";
 
 const Leaderboard = ({ data = [], cacheInfo = {}, eventData = {} }) => {
   console.log("Cache Info", cacheInfo);
-  console.log(eventData);
+
   return (
     <div className={styles.mainContainer}>
       <h1 className={styles.title}>Guild Event Leaderboard</h1>

@@ -2,10 +2,6 @@ import nextConnect from "next-connect";
 import dbMiddleware from "middleware/database";
 import { returnCache, cacheResult } from "middleware/cache";
 
-// add caching middleware later https://www.npmjs.com/package/memory-cache
-
-import pointsFunction from "utils/pointsFunction";
-
 const handler = nextConnect();
 handler.use(returnCache);
 handler.use(dbMiddleware);

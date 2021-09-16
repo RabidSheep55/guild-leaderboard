@@ -54,12 +54,14 @@ handler.get(async (req, res, next) => {
     )
     .toArray();
 
+  console.log(data);
+
   // Add points to each
   data.forEach((item) => {
     item.points =
       pointParams.reduce(
         (acc, cur) =>
-          acc + item.details[cur.display_name] * parseFloat(cur.weight),
+          acc + (item.details[cur.display_name] || 0) * parseFloat(cur.weight),
         0
       ) || 0;
   });

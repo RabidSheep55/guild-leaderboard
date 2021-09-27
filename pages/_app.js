@@ -2,6 +2,9 @@ import NProgress from "nprogress";
 import Router from "next/router";
 import "nprogress/nprogress.css";
 
+import { hotjar } from "react-hotjar";
+import { useEffect } from "react";
+
 NProgress.configure({
   minimum: 0.2,
   easing: "ease",
@@ -19,6 +22,10 @@ import Layout from "../components/Layout";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    hotjar.initialize(2622707, 6);
+  }, []);
+
   return (
     <Layout>
       <Component {...pageProps} />

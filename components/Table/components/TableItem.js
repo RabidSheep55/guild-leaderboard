@@ -8,7 +8,7 @@ import Detail from "./Detail";
 import styles from "../styles/TableItem.module.css";
 import tableStyles from "../styles/Table.module.css";
 
-const TableItem = ({ rank, name, details, points, darker, last }) => {
+const TableItem = ({ rank, name, details, points, darker, perc, last }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
         tableStyles.tableSettings,
         darker && styles.darker,
         last && styles.last,
-        ].join(" ")}
+      ].join(" ")}
       onClick={() => setIsOpen((prev) => !prev)}
     >
       <div className={[styles.item, styles.rank].join(" ")}>{rank}</div>
@@ -28,7 +28,7 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
           styles.item,
           styles.details,
           isOpen && styles.openDetails,
-          ].join(" ")}
+        ].join(" ")}
       >
         {Object.entries(details)
           .filter((item) => item[1] != 0 && item[1] != null)
@@ -38,7 +38,8 @@ const TableItem = ({ rank, name, details, points, darker, last }) => {
           ))}
       </div>
       <div className={[styles.item, styles.points].join(" ")}>
-        {numeral(points).format("0.00a") || points}
+        <span>{numeral(points).format("0.00a") || points}</span>
+        <div className={styles.hoverPerc}>{(perc * 100).toFixed(2)} %</div>
       </div>
     </div>
   );

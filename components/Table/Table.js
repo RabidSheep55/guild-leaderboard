@@ -25,6 +25,7 @@ const Table = ({ data }) => {
             name={item.username}
             details={item.details}
             points={item.points}
+            perc={item.perc}
             darker={index % 2 === 0}
             last={index === data.length - 1}
           />

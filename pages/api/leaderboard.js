@@ -54,9 +54,10 @@ handler.get(async (req, res, next) => {
     )
     .toArray();
 
-  console.log(data);
+  // console.log(data);
 
-  // Add points to each
+  // Add points to each (and compute sum)
+  let sum = 0;
   data.forEach((item) => {
     item.points =
       pointParams.reduce(
@@ -64,6 +65,14 @@ handler.get(async (req, res, next) => {
           acc + (item.details[cur.display_name] || 0) * parseFloat(cur.weight),
         0
       ) || 0;
+    sum += item.points;
+  });
+
+  console.log(sum);
+
+  // Compute point % of totality for each user
+  data.forEach((item) => {
+    item.perc = item.points / sum;
   });
 
   // Sort by points
